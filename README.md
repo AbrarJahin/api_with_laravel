@@ -1,6 +1,6 @@
-## Logistics-API for iOS and Android Apps of Terra App
+# Logistics-API for iOS and Android Apps of Terra App
 
-# Web URL - https://terra-app.com/
+## Web URL - https://terra-app.com/
 
 ###Server Installation (AWS Linux env)
 
@@ -31,3 +31,41 @@ php artisan migrate:reset
 
 php artisan migrate --seed
 
+## API Documentation
+
+### Client Account
+
+No of total pages- 6
+
+#### Page 1 of 6
+
+##### Summary - List
+API for summary
+
+##### Jobs - List
+
+#### Page 2 of 6
+
+##### Profile - Show
+
+##### Profile - Update
+
+#### Page 3 of 6
+
+##### Inviting Friends (by mail or phone)
+
+#### Page 4 of 6
+
+##### Payment Statements - List
+
+#### Page 5 of 6
+
+##### How can we help
+
+##### View Training Videos
+
+##### Report issue with job
+
+#### Page 6 of 6
+
+##### Link to app
