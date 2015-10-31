@@ -3,10 +3,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 
-class ListShowingController extends Controller
+class AuthController extends Controller
 {
-	//Summary - Page 1
-    public function list_summary()
+	//User Login
+    public function login()
     {
     	return Response::json(
 								[
@@ -15,8 +15,8 @@ class ListShowingController extends Controller
 							);
     }
 
-    //Jobs - page 1
-    public function list_jobs()
+    ////User Logout
+    public function logout()
     {
     	return Response::json(
 								[
@@ -25,8 +25,8 @@ class ListShowingController extends Controller
 							);
     }
 
-    //Payment Statements List - page 4
-    public function list_jobs()
+    //User Registration
+    public function register()
     {
     	return Response::json(
 								[
