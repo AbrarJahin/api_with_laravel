@@ -69,3 +69,11 @@ API for summary
 #### Page 6 of 6
 
 ##### Link to app
+
+#### Page 7 of 6
+
+##### Login
+
+##### Registration
+
+##### Logout
