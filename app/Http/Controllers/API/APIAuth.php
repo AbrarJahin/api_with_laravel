@@ -7,6 +7,6 @@ class APIAuth extends Controller
 {
     public function __construct()
     {
-        //$this->middlewere('api_auth');
+        $this->middleware('api');
     }
 }

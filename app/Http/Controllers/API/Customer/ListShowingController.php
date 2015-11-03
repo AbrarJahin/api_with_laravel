@@ -6,12 +6,9 @@ use App\Http\Controllers\API\APIAuth;
 
 class ListShowingController extends APIAuth
 {
-	//Summary - Page 1
     public function dummy()
     {
         //return response()->view('welcome');
-        $length=150;
-
         return response()->json([
                                     'name' => 'Abigail',
                                     'state' => 'CA',
@@ -19,10 +16,11 @@ class ListShowingController extends APIAuth
                                                         'a' => "SSSSSS",
                                                         'b' => 8
                                                     ),
-                                    'access_token' => bin2hex(random_bytes($length))
+                                    'access_token' => bin2hex(random_bytes(10))
                                 ]);
     }
 
+    //Summary - Page 1
     public function list_summary()
     {
     	return Response::json(
