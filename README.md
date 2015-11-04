@@ -74,63 +74,46 @@ API for summary
 
 ##### Login
 
-###### Request Type
-POST
+###### Request
 
-####### Variables-
-login_name
+Request Type 	| URL to request
+----------------|----------------------
+POST 			| **base_url**/api/customer/login
 
-password
-
-##### Response
-
-{
-
-  "name": "Abrar Jahin",
-
-  "user_type": "customer",
-
-  "access_token": "c139f791979281367aa2b6d6786206dbd41ef17a746213b4519bdea306a9025c47829654f348d38dc85cd96aebc2c471fc668b3f68c8fe7062e4c6223c1b274fbcee1d19d96ee4559c85f8e71fa0b2f6b7e1bcbf0a239fb157241a32e5d4bcc24e9a8a9c047d79b6d5b7b2039220955d56b70df7412fe65f4046f74fe6f05c606ebec0d21b2962aa6767b280d22a306f59c579661440",
-
-  "expires_on": {
-
-    "date": "2015-11-07 04:21:38",
-
-    "timezone_type": 3,
-
-    "timezone": "UTC"
-
-  }
-
-}
-
-"access_token" and "login_name" should be stored and need to be used for any farther API call in the server
-"expires_on" is the time when current access_token would be expired
-
-##### Registration
-
-
-
-##### Logout
-
-POST | **base_url**/api/customer/login
+###### Variables
 
 Field | Description
 ------|------------
-**access_token** | The item's unique id.
-**login_name** | `true` if the item is deleted.
+**login_name** 		| User login name
+**password** 		| Password of the user
 
-##### Response
+###### Response
 
 ```json
 {
   "name": "Abrar Jahin",
+  "login_name": "abrarjahin",
   "user_type": "customer",
-  "access_token": "c139f791979281367aa2b6d6786206dbd41ef17a746213b4519bdea306a9025c47829654f348d38dc85cd96aebc2c471fc668b3f68c8fe7062e4c6223c1b274fbcee1d19d96ee4559c85f8e71fa0b2f6b7e1bcbf0a239fb157241a32e5d4bcc24e9a8a9c047d79b6d5b7b2039220955d56b70df7412fe65f4046f74fe6f05c606ebec0d21b2962aa6767b280d22a306f59c579661440",
+  "access_token": "9e34573cd44f4daa98feabe131a4938056d967ec41def9dc1e1cdd3d63df40e02e045ff5f6b763fbc39dded0e5e9d8c736fa6d566fad9f169274e9e82d8e2109db79c6c66bfef73c8c4931842419938abe047b59c9ae8c98ab837638d502d51e89613cdc78fdf55da4b50677c6842b1cbc9c3354d7c3287e9d572868d833c42cddacbb163e991ef084ba2c9739716f7a714471586d72",
   "expires_on": {
-    "date": "2015-11-07 04:21:38",
+    "date": "2015-11-07 08:12:57",
     "timezone_type": 3,
     "timezone": "UTC"
   }
 }
 ```
+
+####### Variables
+
+Field | Description
+------|------------
+**name** 			| User name
+**login_name** 		| User login name
+**user_type** 		| Type of the user
+**access_token** 	| Token needed for next time API access
+**expires_on** 		| Time of expire of the token
+
+##### Registration
+
+
+##### Logout
