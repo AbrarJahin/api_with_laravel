@@ -41,7 +41,7 @@ class ListShowingController extends APIAuth
     }
 
     //Payment Statements List - page 4
-    public function payment_tatements()
+    public function payment_statements()
     {
     	return Response::json(
 								[
