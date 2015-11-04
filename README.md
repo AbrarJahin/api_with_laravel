@@ -4,6 +4,7 @@
 
 ###Server Installation (AWS Linux env)
 
+```clj
 cd var/www
 
 git clone https://github.com/terra-app/logistics-API
@@ -30,6 +31,7 @@ php artisan migrate:rollback
 php artisan migrate:reset
 
 php artisan migrate --seed
+```
 
 ## API Documentation
 
@@ -80,10 +82,8 @@ Request Type 	| URL to request
 ----------------|----------------------
 POST 			| **base_url**/api/customer/login
 
-###### Variables
-
-Field | Description
-------|------------
+Body Field 			| Description
+--------------------|------------
 **login_name** 		| User login name
 **password** 		| Password of the user
 
@@ -103,17 +103,17 @@ Field | Description
 }
 ```
 
-####### Variables
-
-Field | Description
-------|------------
+Field Name 			| Description
+--------------------|------------
 **name** 			| User name
 **login_name** 		| User login name
 **user_type** 		| Type of the user
 **access_token** 	| Token needed for next time API access
 **expires_on** 		| Time of expire of the token
 
+
 ##### Registration
 
 
 ##### Logout
+
