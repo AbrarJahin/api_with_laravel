@@ -74,6 +74,10 @@ API for summary
 
 #### Page 7 of 6
 
+##### Registration
+
+
+
 ##### Login
 
 ###### Request
@@ -112,8 +116,28 @@ Field Name 			| Description
 **expires_on** 		| Time of expire of the token
 
 
-##### Registration
-
-
 ##### Logout
 
+###### Request
+
+Request Type 	| URL to request
+----------------|----------------------
+POST 			| **base_url**/api/customer/logout
+
+Body Field 			| Description
+--------------------|------------
+**access_token** 		| User login name
+
+###### Response
+
+```json
+{
+  "message": "User Not Logged In, so no need to log out",
+  "status": 0
+}
+```
+
+Field Name 			| Description
+--------------------|------------
+**message** 		| Server Message about log out responce
+**status** 			| true/false

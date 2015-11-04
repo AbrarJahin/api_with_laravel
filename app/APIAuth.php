@@ -13,6 +13,13 @@ class APIAuth extends Model
      */
     protected $table = 'api_auth';
 
+    /**
+     * The primary key associated with the table.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'user_id';
+
      /**
      * The attributes that are mass assignable.
      *

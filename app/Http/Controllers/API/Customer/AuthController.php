@@ -53,20 +53,36 @@ class AuthController extends Controller
 
         //Successfully Logged In
 
-        $api_auth               = new APIAuth;
-        $api_auth->user_id      = Auth::user()->id;
-        $api_auth->access_token = bin2hex(random_bytes(150));
-        $api_auth->ip           = Request::getClientIp(true);
-        $api_auth->expires_on   = Carbon::now()->addHours(72);;
-        $api_auth->save();
+        $access_token = bin2hex(random_bytes(75));      //150/2=75, so 75 is used
+        $expires_on   = Carbon::now()->addHours(72);
+
+        //If found then update the access_token so that other API login will be autometically logged out
+        if(APIAuth::where('user_id', '=', Auth::user()->id)->count() > 0)
+        {
+            $api_auth     = APIAuth::findOrFail(Auth::user()->id);
+            $api_auth->access_token = $access_token;    //to prevent auto logging out for other login in API, comment this line
+            $api_auth->ip           = Request::getClientIp(true);
+            $api_auth->expires_on   = $expires_on;
+            $api_auth->save();
+        }
+        // Insert New Entry
+        else
+        {
+            APIAuth::Create(array(
+                                    'user_id'       => Auth::user()->id,
+                                    'access_token'  => $access_token,
+                                    'ip'            => Request::getClientIp(true),
+                                    'expires_on'    => $expires_on
+                                ));
+        }
 
     	return response()->json(
 								[
 									'name'         => Auth::user()->first_name." ".Auth::user()->last_name,
                                     'login_name'   => Auth::user()->login_name,
                                     'user_type'    => Auth::user()->user_type,
-                                    'access_token' => $api_auth->access_token,
-                                    'expires_on'   => $api_auth->expires_on
+                                    'access_token' => $access_token,
+                                    'expires_on'   => $expires_on
 								]
 							);
     }
@@ -74,20 +90,42 @@ class AuthController extends Controller
     ////User Logout
     public function logout()
     {
-    	return response::json(
-								[
-									//array of data
-								]
-							);
+        $data = 0;
+        if (Auth::check())
+        {
+            $postData       = Request::all();
+            //Removing from API Login
+            //APIAuth::findOrFail(Auth::user()->id)->forceDelete();         //Not so much secured - So, we are not using it
+            $data = APIAuth::where('user_id', Auth::user()->id)                     //It is secured - so we are using it
+                        ->where('access_token', $postData['access_token'])
+                        ->delete();
+                //Logging out the user
+            if($data)
+            {
+                Auth::logout();
+                $message = "Log Out Successfully";
+            }
+            else
+                $message = "Bad 'access_token' provided";
+        }
+        else
+            $message = "User Not Logged In, so no need to log out";
+
+    	return response()->json(
+    								[
+    									'message'      => $message,
+                                        'status'       => $data
+    								]
+    							);
     }
 
     //User Registration
     public function register()
     {
-    	return response::json(
-								[
-									//array of data
-								]
-							);
+    	return response()->json(
+    								[
+    									//array of data
+    								]
+    							);
     }
 }
