@@ -63,6 +63,7 @@ class AuthController extends Controller
     	return response()->json(
 								[
 									'name'         => Auth::user()->first_name." ".Auth::user()->last_name,
+                                    'login_name'   => Auth::user()->login_name,
                                     'user_type'    => Auth::user()->user_type,
                                     'access_token' => $api_auth->access_token,
                                     'expires_on'   => $api_auth->expires_on

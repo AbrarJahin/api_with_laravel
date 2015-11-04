@@ -6,20 +6,6 @@ use App\Http\Controllers\API\APIAuth;
 
 class ListShowingController extends APIAuth
 {
-    public function dummy()
-    {
-        //return response()->view('welcome');
-        return response()->json([
-                                    'name' => 'Abigail',
-                                    'state' => 'CA',
-                                    'states' => array(
-                                                        'a' => "SSSSSS",
-                                                        'b' => 8
-                                                    ),
-                                    'access_token' => bin2hex(random_bytes(10))
-                                ]);
-    }
-
     //Summary - Page 1
     public function list_summary()
     {

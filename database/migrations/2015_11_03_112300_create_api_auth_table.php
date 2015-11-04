@@ -14,7 +14,7 @@ class CreateApiAuthTable extends Migration
     {
         Schema::create('api_auth', function (Blueprint $table)
         {
-            $table->integer('user_id')  ->unsigned()  ->index();
+            $table->integer('user_id')  ->unsigned() ->unique();
             $table->string('access_token', 150);                    //Access token length = 150
             $table->string('ip', 20);
             $table->timestamps();

@@ -8,12 +8,6 @@ Route::group([ 'prefix' => 'api/customer', 'namespace' => 'API\Customer'], funct
 	namespace is for creating folder in controllers folder (API\Customer)
 	*/
 
-	Route::get('/',
-	[
-		'as' => 'API.customer.index',
-		'uses' => 'ListShowingController@dummy'
-	]);
-
 	//Authintication
 	Route::post('login',
 	[
@@ -21,7 +15,7 @@ Route::group([ 'prefix' => 'api/customer', 'namespace' => 'API\Customer'], funct
 		'uses' => 'AuthController@login'
 	]);
 
-	Route::delete('logout',
+	Route::post('logout',
 	[
 		'as' => 'API.customer.logout',
 		'uses' => 'AuthController@logout'
