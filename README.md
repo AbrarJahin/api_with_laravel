@@ -76,7 +76,36 @@ API for summary
 
 ##### Registration
 
+###### Request
 
+Request Type 	| URL to request
+----------------|----------------------
+POST 			| **base_url**/api/customer/register
+
+Body Field 			| Description
+--------------------|------------
+**first_name** 		| User's First Name
+**last_name** 		| User's Last Name
+**login_name** 		| User's Login Name
+**password** 		| User's password
+**neighbourhood** 	| User's neighbourhood
+**email** 			| User's Email
+
+###### Response
+
+```json
+{
+  "message": [
+    "The login name has already been taken."
+  ],
+  "status": 0
+}
+```
+
+Field Name 			| Description
+--------------------|------------
+**message** 		| Server Message about log out responce
+**status** 			| true/false
 
 ##### Login
 
@@ -126,14 +155,14 @@ POST 			| **base_url**/api/customer/logout
 
 Body Field 			| Description
 --------------------|------------
-**access_token** 		| User login name
+**access_token** 	| Token needed for next time API access
 
 ###### Response
 
 ```json
 {
-  "message": "User Not Logged In, so no need to log out",
-  "status": 0
+  "message": "Log Out Successfully",
+  "status": 1
 }
 ```
 

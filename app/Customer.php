@@ -11,7 +11,7 @@ class Customer extends Model
      *
      * @var string
      */
-    protected $table = 'customer';
+    protected $table = 'customers';
 
      /**
      * The attributes that are mass assignable.
@@ -19,6 +19,13 @@ class Customer extends Model
      * @var array
      */
     protected $fillable = ['user_id', 'neighbourhood', 'email'];
+
+    /**
+     * Disabling the timestamps (created_at and updated_at) because it is already in user table
+     *
+     * @var array
+     */
+    public $timestamps  = false;
 
     /**
      * Get the user info associated with the customer.

@@ -122,9 +122,51 @@ class AuthController extends Controller
     //User Registration
     public function register()
     {
+        $postData       = Request::all();
+        $message        = "sss";
+        $data           = 0;
+
+        $validator = Validator::make($postData,
+                        [
+                            'first_name'    => 'required',
+                            'last_name'     => 'required',
+                            'login_name'    =>  'required|unique:users',
+                            'password'      => 'required',
+                            'neighbourhood' => 'required',
+                            'email'         => 'required|email'
+                        ]);
+
+        if ($validator->fails())
+        {
+            return response(
+                                [
+                                    "message" => $validator->messages()->all(),     //"'user_name' or 'password' is missing !"
+                                    'status'  => $data
+                                ],411);
+        }
+        else
+        {
+            $user=User::Create(array(
+                                    'first_name'    => $postData['first_name'],
+                                    'last_name'     => $postData['last_name'],
+                                    'login_name'    => strtolower($postData['login_name']),
+                                    'password'      => bcrypt($postData['password']),
+                                    'user_type'     => 'customer',
+                                    'referal_code'  => bin2hex(random_bytes(30))
+                                ));
+            Customer::Create(array(
+                                    'user_id'       => $user->id,
+                                    'neighbourhood' => $postData['neighbourhood'],
+                                    'email'         => $postData['email']
+                                ));
+            $message = "Successfully registered, please verify your mail";
+            $data    = 1;
+        }
+
     	return response()->json(
     								[
-    									//array of data
+    									'message'      => $message,
+                                        'status'       => $data
     								]
     							);
     }

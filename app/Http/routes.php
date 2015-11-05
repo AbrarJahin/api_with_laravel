@@ -21,7 +21,7 @@ Route::group([ 'prefix' => 'api/customer', 'namespace' => 'API\Customer'], funct
 		'uses' => 'AuthController@logout'
 	]);
 
-	Route::put('register',
+	Route::post('register',
 	[
 		'as' => 'API.customer.register',
 		'uses' => 'AuthController@register'
