@@ -17,8 +17,8 @@ class CreatePartnersTable extends Migration
             $table->increments('id');
             $table->integer('user_id')  ->unsigned()  ->index();
             $table->string('company_name',20);
-            $table->string('type_of_phone',10);
-            $table->tinyInteger('is_18_years_old');
+            $table->enum('type_of_phone', ['Android', 'iOS', 'Other']);
+            $table->enum('is_18_years_old', ['yes', 'no']);
 
             //Foreign Keys
             $table->foreign('user_id')->references('id')->on('users');

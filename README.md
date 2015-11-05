@@ -40,39 +40,67 @@ php artisan migrate --seed
 ------------------------------------------------------------------------------------------
 
 ## API Documentation
-------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------
 
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 ### Client Account
+------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 No of total pages- 7
 
 #### Page 1 of 7
-
+------------------------------------------------------------------------------------------
 ##### Summary - List
 
-Summary of last defined day's works, partner's name, average rating given to partner, total jobs done in that perios and total payout for those works
+Summary of last defined day's works, partner's name, average rating given to partner, total jobs done in that perios and total payout for those works.
 
+###### Request
+
+Request Type 	| URL to request
+----------------|----------------------
+POST 			| **base_url**/api/customer/list_summary
+
+Body Field 				| Description
+------------------------|------------
+**login_name** 			| log_in name of the user
+**access_token** 		| Token needed for next time API access
+**no_of_day_to_show** 	| Data of the needed days
+**data_per_page** 		| No of data per page
+**current_page_no** 	| Current active page no
+
+###### Response
+
+```json
+{
+  "message": "Data Retrived Successfull",
+  "status": 1
+}
+```
+
+Field Name 			| Description
+--------------------|------------
+**message** 		| Server Message about log out responce
+**status** 			| true/false
 
 
 ##### Jobs - List
 
 #### Page 2 of 7
-
+------------------------------------------------------------------------------------------
 ##### Profile - Show
 
 ##### Profile - Update
 
 #### Page 3 of 7
-
+------------------------------------------------------------------------------------------
 ##### Inviting Friends (by mail or phone)
 
 #### Page 4 of 7
-
+------------------------------------------------------------------------------------------
 ##### Payment Statements - List
 
 #### Page 5 of 7
-
+------------------------------------------------------------------------------------------
 ##### How can we help
 
 ##### View Training Videos
@@ -80,11 +108,11 @@ Summary of last defined day's works, partner's name, average rating given to par
 ##### Report issue with job
 
 #### Page 6 of 7
-
+------------------------------------------------------------------------------------------
 ##### Link to app
 
 #### Page 7 of 7
-
+------------------------------------------------------------------------------------------
 ##### Registration
 
 ###### Request
@@ -186,6 +214,8 @@ Field Name 			| Description
 ------------------------------------------------------------------------------------------
 
 ### Partner Account
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 No of total pages- 7
 

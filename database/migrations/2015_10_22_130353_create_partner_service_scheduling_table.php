@@ -17,8 +17,8 @@ class CreatePartnerServiceSchedulingTable extends Migration
             $table->increments('id');
             $table->integer('partner_id')                       ->unsigned()  ->index();
             $table->integer('scheduled_service_id')             ->unsigned()  ->index();
-            $table->tinyInteger('is_done');         //it is updated by partner to review for ADMIN and ask for customer review
-            $table->tinyInteger('is_cancelled');
+            $table->enum('is_done', ['yes', 'no'])->default('no');//it is updated by partner to review for ADMIN and ask for customer review
+            $table->enum('is_cancelled', ['yes', 'no'])->default('no');
             $table->timestamps();
 
             //Foreign Keys
