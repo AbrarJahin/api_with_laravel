@@ -4,6 +4,8 @@
 
 ###Server Installation (AWS Linux env)
 
+Corn job ( http://laravel.com/docs/5.1/scheduling ) needed to update the "partner_service_scheduling" table every day so that next job can be created autometically
+
 ```clj
 cd var/www
 
@@ -33,34 +35,43 @@ php artisan migrate:reset
 php artisan migrate --seed
 ```
 
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
 ## API Documentation
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
 
 ### Client Account
+------------------------------------------------------------------------------------------
+No of total pages- 7
 
-No of total pages- 6
-
-#### Page 1 of 6
+#### Page 1 of 7
 
 ##### Summary - List
-API for summary
+
+Summary of last defined day's works, partner's name, average rating given to partner, total jobs done in that perios and total payout for those works
+
+
 
 ##### Jobs - List
 
-#### Page 2 of 6
+#### Page 2 of 7
 
 ##### Profile - Show
 
 ##### Profile - Update
 
-#### Page 3 of 6
+#### Page 3 of 7
 
 ##### Inviting Friends (by mail or phone)
 
-#### Page 4 of 6
+#### Page 4 of 7
 
 ##### Payment Statements - List
 
-#### Page 5 of 6
+#### Page 5 of 7
 
 ##### How can we help
 
@@ -68,11 +79,11 @@ API for summary
 
 ##### Report issue with job
 
-#### Page 6 of 6
+#### Page 6 of 7
 
 ##### Link to app
 
-#### Page 7 of 6
+#### Page 7 of 7
 
 ##### Registration
 
@@ -170,3 +181,13 @@ Field Name 			| Description
 --------------------|------------
 **message** 		| Server Message about log out responce
 **status** 			| true/false
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
+
+### Partner Account
+
+No of total pages- 7
+
+------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------
