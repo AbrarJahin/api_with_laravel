@@ -16,5 +16,6 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/customer/register',
 							'api/customer/logout',
 							'api/customer/list_summary',
+							'api/customer/list_jobs',
 						];
 }

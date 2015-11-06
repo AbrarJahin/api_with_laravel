@@ -48,7 +48,7 @@ class APIMiddleware
 
         //Now check if the user is logged in or not, if not logged in, then log in him
         if (Auth::check())
-        {// Check if logged in user is current user
+        {// Check if logged in user is not current user
             if(Auth::user()->id!=$api_auth->get()[0]->user_id)
             {
                 Auth::logout();
@@ -57,22 +57,36 @@ class APIMiddleware
                                         "message" => "The access token owner user is not logged in"
                                     ],409);
             }
+            elseif (Auth::user()->login_name!=$request->input('login_name'))
+            {//If 
+                Auth::logout();
+                return response(
+                                    [
+                                        "message" => "User 'login_name' is wrong"
+                                    ],422);
+            }
         }
         else
-        {//Log in the user
+        {//User Not Logged In
+            return response(
+                                    [
+                                        "message" => "User not logged in"
+                                    ],401);
+            /*
             $credentials = array(                       //Names hould be as in DB columns
                                     'login_name'    => strtolower($request->input('login_name')),
                                     'id'            => $api_auth->get()[0]->user_id
                                 );
 
             //Logging In Failed
-            if (!Auth::attempt($credentials, $remember_me))        //Authintication via remember_me
+            if (!Auth::attempt($credentials, true))        //Authintication via remember_me
             {
                 return response(
                                     [
                                         "message" => "'login_name' is wrong"
                                     ],406);
             }
+            */
         }
 
         //Now change the 'access_token' expire time

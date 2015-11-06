@@ -34,6 +34,11 @@ Route::group([ 'prefix' => 'api/customer', 'namespace' => 'API\Customer'], funct
 		'as' 	=> 'API.customer.list_summary',
 		'uses' 	=> 'ListShowingController@list_summary'
 	]);
+	Route::post('list_jobs',
+	[
+		'as' 	=> 'API.customer.list_jobs',
+		'uses' 	=> 'ListShowingController@list_jobs'
+	]);
 	//List Showing - END
 	
 });
