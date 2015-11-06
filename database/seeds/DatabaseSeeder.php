@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(UserTableSeeder::class);
         $this->call(CustomerTableSeeder::class);
         $this->call(PartnerTableSeeder::class);
-        $this->call(APIAuthTableSeeder::class);
 
         Model::reguard();
     }

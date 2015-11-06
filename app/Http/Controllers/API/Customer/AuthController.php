@@ -17,6 +17,7 @@ class AuthController extends Controller
 	//User Login Rute
     public function login()
     {
+        //Email also should be verified, otherwise he should not allowed to be logged in, this should be implemented
         $postData       = Request::all();
         $remember_me    = true;
 
@@ -59,7 +60,7 @@ class AuthController extends Controller
         //If found then update the access_token so that other API login will be autometically logged out
         if(APIAuth::where('user_id', '=', Auth::user()->id)->count() > 0)
         {
-            $api_auth     = APIAuth::findOrFail(Auth::user()->id);
+            $api_auth               = APIAuth::findOrFail(Auth::user()->id);
             $api_auth->access_token = $access_token;    //to prevent auto logging out for other login in API, comment this line
             $api_auth->ip           = Request::getClientIp(true);
             $api_auth->expires_on   = $expires_on;

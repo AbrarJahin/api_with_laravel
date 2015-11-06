@@ -64,26 +64,40 @@ Body Field 				| Description
 ------------------------|------------
 **login_name** 			| log_in name of the user
 **access_token** 		| Token needed for next time API access
-**no_of_day_to_show** 	| Data of the needed days
-**data_per_page** 		| No of data per page
-**current_page_no** 	| Current active page no
+**no_of_day_to_show** 	| Data of the needed days, optional, default = 7
+**data_per_page** 		| No of data per page, optional, default = 10
+**current_page_no** 	| Current active page no, optional, default = 1
 
 ###### Response
 
 ```json
 {
-  "message": "Data Retrived Successfull",
-  "status": 1
+  "no_of_day_to_show": "7",
+  "data_per_page": 10,
+  "data": [],
+  "current_page_no": "1",
+  "total_page_no": 0,
+  "showing_start": 0,
+  "showing_end": 0,
+  "total_no_of_data": 0
 }
 ```
 
-Field Name 			| Description
---------------------|------------
-**message** 		| Server Message about log out responce
-**status** 			| true/false
+Field Name 				| Description
+------------------------|------------
+**no_of_day_to_show** 	| No of last day's data shown
+**data_per_page** 		| No of data per page
+**data** 				| Current page's data
+**current_page_no**		| Current page's number
+**total_page_no** 		| Total no of pages
+**showing_start** 		| Current page's start data
+**showing_end** 		| Current page's start data
+**total_no_of_data**	| Total data available
 
 
 ##### Jobs - List
+
+
 
 #### Page 2 of 7
 ------------------------------------------------------------------------------------------
