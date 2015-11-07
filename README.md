@@ -280,8 +280,8 @@ Body Field 				      | Description
   "data_per_page": 10,
   "data": [
     {
-      "basic_payment_status": "In Process,
-      "extra_payment_status": "In Process,
+      "basic_payment_status": "In Process",
+      "extra_payment_status": "In Process",
       "basic_service_payment": "100",
       "week_ending": "7th January, 2015"
     },
