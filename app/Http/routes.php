@@ -56,4 +56,32 @@ Route::group([ 'prefix' => 'api/customer', 'namespace' => 'API\Customer'], funct
 		'uses' 	=> 'ProfileController@profile_update'
 	]);
 	//Profile - END
+
+	//Common Features
+	Route::post('link_to_app',
+	[
+		'as' 	=> 'API.customer.link_to_app',
+		'uses' 	=> 'CommonFeatureController@link_to_app'
+	]);
+	Route::post('reporting_issue_with_job',
+	[
+		'as' 	=> 'API.customer.reporting_issue_with_job',
+		'uses' 	=> 'CommonFeatureController@reporting_issue_with_job'
+	]);
+	Route::post('training_videos',
+	[
+		'as' 	=> 'API.customer.training_videos',
+		'uses' 	=> 'CommonFeatureController@training_videos'
+	]);
+	Route::post('how_can_we_help',
+	[
+		'as' 	=> 'API.customer.how_can_we_help',
+		'uses' 	=> 'CommonFeatureController@how_can_we_help'
+	]);
+	Route::post('inviting_friends',
+	[
+		'as' 	=> 'API.customer.inviting_friends',
+		'uses' 	=> 'CommonFeatureController@inviting_friends'
+	]);
+	//Common Features - END
 });

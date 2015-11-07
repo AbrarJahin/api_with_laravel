@@ -22,5 +22,11 @@ class VerifyCsrfToken extends BaseVerifier
 
 							'api/customer/profile_view',
 							'api/customer/profile_update',
+
+							'api/customer/link_to_app',
+							'api/customer/reporting_issue_with_job',
+							'api/customer/training_videos',
+							'api/customer/how_can_we_help',
+							'api/customer/inviting_friends',
 						];
 }

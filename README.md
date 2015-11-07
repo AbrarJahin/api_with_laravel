@@ -250,7 +250,21 @@ Field Name              | Description
 ------------------------------------------------------------------------------------------
 ##### Inviting Friends (by mail or phone)
 
+'Is this format is OK @alex?'
 
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/inviting_friends
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**invitation_type**     | phone/email
+**address**             | Phone number or email address
+**message**             | Message of the customer
 
 #### Page 4 of 7
 ------------------------------------------------------------------------------------------
@@ -315,21 +329,128 @@ Field Name 				      | Description
 ------------------------------------------------------------------------------------------
 ##### How can we help
 
-Need to talk to alex about it - what will be the page view and is it a feedback? of just ask questions@alex?
+'Need to talk to alex about it - what will be the page view and is it a feedback? of just ask questions@alex?'
+
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/how_can_we_help
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
 
 ##### View Training Videos
 
-Will be some video available in this page @alex?
-Will be they youtube vedios @alex?
+'Will be some video available in this page @alex?
+Will be they youtube vedios @alex?'
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/training_videos
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "video_links": [
+    {
+      "subject": "Anything",
+      "link": "https://www.youtube.com/watch?v=ORV-6HyuG2Y&list=PL5O3zv"
+    },
+    {
+      "subject": "Processed",
+      "link": "https://www.youtube.com/watch?v=ORV-6HWPG2Y&list"
+    }
+  ]
+}
+```
+
+Field Name                      | Description
+--------------------------------|------------
+**video_links**                 | Link of the website
+
 
 ##### Report issue with job
 
-Only storing the feedback @alex?
+'Only storing the issue @alex?'
+
+Reporting service - if any un usual problem occured in any job
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/reporting_issue_with_job
+
+Body Field                        | Description
+----------------------------------|------------
+**login_name**                    | log_in name of the user
+**access_token**                  | Token needed for next time API access
+**scheduled_service_id**          | log_in name of the user
+**partner_service_scheduling_id** | Token needed for next time API access
+**report**                        | log_in name of the user
+
+###### Response
+
+```json
+{
+  "message": "Report Added Successfully, out team is checking the issue"
+}
+```
+
+Field Name                      | Description
+--------------------------------|------------
+**message**                     | Output f everything done OK
 
 #### Page 6 of 7
 ------------------------------------------------------------------------------------------
 ##### Link to app
-Will it be a fixed link returned from API (hard coded) or return from DB  @alex?
+'Will it be a fixed link returned from API (hard coded) or return from DB  @alex? Currently hard coded in API'
+
+Link of the apps
+
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/link_to_app
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "web_link": "http://terra-app.com/",
+  "app_android_customer_link": "https://play.google.com/store/apps/developer?id=Terra&hl=en",
+  "app_android_partner_link": "https://play.google.com/store/apps/developer?id=Terra&hl=en",
+  "app_ios_customer_link": "https://itunes.apple.com/us/app/terra/id373793156?mt=8",
+  "app_ios_partner_link": "https://itunes.apple.com/us/app/terra/id373793156?mt=8"
+}
+```
+
+Field Name                      | Description
+--------------------------------|------------
+**web_link**                    | Link of the website
+**app_android_customer_link**   | Link of customer Android App
+**app_android_partner_link**    | Link of partner Android App
+**app_ios_customer_link**       | Link of customer iOS App
+**app_ios_partner_link**        | Link of partner iOS App
 
 #### Page 7 of 7
 ------------------------------------------------------------------------------------------
