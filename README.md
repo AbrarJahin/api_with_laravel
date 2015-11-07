@@ -174,7 +174,76 @@ Field Name 				      | Description
 ------------------------------------------------------------------------------------------
 ##### Profile - Show
 
+Show current user's profile
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/profile_view
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "first_name": "Abrar",
+  "last_name": "Jahin",
+  "neighbourhood": "4b02187c32",
+  "email": "something@anything.com"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**first_name**          | No of last day's data shown
+**last_name**           | No of data per page
+**neighbourhood**       | Current page's data
+**email**               | Current page's number
+
+
 ##### Profile - Update
+
+Update current user's profile
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/customer/profile_update
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**first_name**          | No of last day's data shown,  optional
+**last_name**           | No of data per page,          optional
+**neighbourhood**       | Current page's data,          optional
+**email**               | Current page's number,        optional
+
+###### Response
+
+```json
+{
+  "first_name": "Abrar",
+  "last_name": "Jahin",
+  "neighbourhood": "4b02187c32",
+  "email": "something@anything.com",
+  "message": "Updated Successfully"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**first_name**          | No of last day's data shown
+**last_name**           | No of data per page
+**neighbourhood**       | Current page's data
+**email**               | Current page's number
+
 
 #### Page 3 of 7
 ------------------------------------------------------------------------------------------
