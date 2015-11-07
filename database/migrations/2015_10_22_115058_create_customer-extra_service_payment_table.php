@@ -17,6 +17,7 @@ class CreateCustomerExtraServicePaymentTable extends Migration
             $table->integer('scheduled_service_id')  ->unsigned()  ->index();
             $table->integer('customer_id')  ->unsigned()  ->index();
             $table->integer('ces_id')  ->unsigned()  ->index();     //cbs_id = customer-extra_service_id
+            $table->enum('status', ['In Progress', 'Processed'])->default('In Progress');
             $table->timestamps();
 
             //Foreign Keys

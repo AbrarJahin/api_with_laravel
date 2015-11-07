@@ -15,7 +15,12 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/customer/login',
 							'api/customer/register',
 							'api/customer/logout',
+
 							'api/customer/list_summary',
 							'api/customer/list_jobs',
+							'api/customer/payment_statements',
+
+							'api/customer/profile_view',
+							'api/customer/profile_update',
 						];
 }

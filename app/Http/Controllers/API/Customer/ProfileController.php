@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 class ProfileController extends Controller
 {
 	//showing the profile
-    public function profile_show()
+    public function profile_view()
     {
-    	return Response::json(
+    	return response()->json(
 								[
-									//array of data
+									'name'         => Auth::user()->first_name." ".Auth::user()->last_name,
+                                    'login_name'   => Auth::user()->login_name,
+                                    'user_type'    => Auth::user()->user_type
 								]
 							);
     }
@@ -18,9 +20,11 @@ class ProfileController extends Controller
     //updating the profile
     public function profile_update()
     {
-    	return Response::json(
+    	return response()->json(
 								[
-									//array of data
+									'name'         => Auth::user()->first_name." ".Auth::user()->last_name,
+                                    'login_name'   => Auth::user()->login_name,
+                                    'user_type'    => Auth::user()->user_type
 								]
 							);
     }

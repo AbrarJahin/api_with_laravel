@@ -56,17 +56,17 @@ Summary of last defined day's works, partner's name, average rating given to par
 
 ###### Request
 
-Request Type 	| URL to request
+Request Type 	  | URL to request
 ----------------|----------------------
-POST 			| **base_url**/api/customer/list_summary
+POST 			      | **base_url**/api/customer/list_summary
 
-Body Field 				| Description
+Body Field 				      | Description
 ------------------------|------------
-**login_name** 			| log_in name of the user
-**access_token** 		| Token needed for next time API access
+**login_name** 			    | log_in name of the user
+**access_token** 		    | Token needed for next time API access
 **no_of_day_to_show** 	| Data of the needed days, optional, default = 7
-**data_per_page** 		| No of data per page, optional, default = 10
-**current_page_no** 	| Current active page no, optional, default = 1
+**data_per_page** 		  | No of data per page, optional, default = 10
+**current_page_no** 	  | Current active page no, optional, default = 1
 
 ###### Response
 
@@ -74,25 +74,38 @@ Body Field 				| Description
 {
   "no_of_day_to_show": "7",
   "data_per_page": 10,
-  "data": [],
+  "data": [
+    {
+      "lawn_pro": 'Any Name',
+      "rating": '4.5',
+      "jobs": 'Any job detail',
+      "payout": 56
+    },
+    {
+      "lawn_pro": 'Any One',
+      "rating": '4.2',
+      "jobs": 'New job',
+      "payout": '120'
+    }
+  ],
   "current_page_no": "1",
-  "total_page_no": 0,
-  "showing_start": 0,
-  "showing_end": 0,
-  "total_no_of_data": 0
+  "total_page_no": 1,
+  "showing_start": 1,
+  "showing_end": 2,
+  "total_no_of_data": 2
 }
 ```
 
-Field Name 				| Description
+Field Name 				      | Description
 ------------------------|------------
 **no_of_day_to_show** 	| No of last day's data shown
-**data_per_page** 		| No of data per page
-**data** 				| Current page's data
-**current_page_no**		| Current page's number
-**total_page_no** 		| Total no of pages
-**showing_start** 		| Current page's start data
-**showing_end** 		| Current page's start data
-**total_no_of_data**	| Total data available
+**data_per_page** 		  | No of data per page
+**data** 				        | Current page's data
+**current_page_no**		  | Current page's number
+**total_page_no** 		  | Total no of pages
+**showing_start** 		  | Current page's start data
+**showing_end** 		    | Current page's start data
+**total_no_of_data**	  | Total data available
 
 
 ##### Jobs - List
@@ -102,16 +115,16 @@ List of all jobs of current user
 ###### Request
 
 Request Type 	| URL to request
-----------------|----------------------
-POST 			| **base_url**/api/customer/list_jobs
+--------------|----------------------
+POST 			    | **base_url**/api/customer/list_jobs
 
-Body Field 				| Description
+Body Field 				      | Description
 ------------------------|------------
-**login_name** 			| log_in name of the user
-**access_token** 		| Token needed for next time API access
+**login_name** 			    | log_in name of the user
+**access_token** 		    | Token needed for next time API access
 **no_of_day_to_show** 	| Data of the needed days, optional, default = 7
-**data_per_page** 		| No of data per page, optional, default = 10
-**current_page_no** 	| Current active page no, optional, default = 1
+**data_per_page** 		  | No of data per page, optional, default = 10
+**current_page_no** 	  | Current active page no, optional, default = 1
 
 ###### Response
 
@@ -119,25 +132,42 @@ Body Field 				| Description
 {
   "no_of_day_to_show": "7",
   "data_per_page": 10,
-  "data": [],
+  "data": [
+    {
+      "finished_by": 'Other Partner',
+      "date": '7th January, 2015',
+      "time_started": '2:13:11 PM',
+      "time_completed": '5:52:14 PM',
+      "pay": '100',
+      "status": 'done'
+    },
+    {
+      "finished_by": 'New Partner',
+      "date": '6th January, 2015',
+      "time_started": '12:13:11 PM',
+      "time_completed": '1:12:14 PM',
+      "pay": '50',
+      "status": 'done'
+    }
+  ],
   "current_page_no": "1",
-  "total_page_no": 0,
-  "showing_start": 0,
-  "showing_end": 0,
-  "total_no_of_data": 0
+  "total_page_no": 1,
+  "showing_start": 1,
+  "showing_end": 2,
+  "total_no_of_data": 2
 }
 ```
 
-Field Name 				| Description
+Field Name 				      | Description
 ------------------------|------------
 **no_of_day_to_show** 	| No of last day's data shown
-**data_per_page** 		| No of data per page
-**data** 				| Current page's data
-**current_page_no**		| Current page's number
-**total_page_no** 		| Total no of pages
-**showing_start** 		| Current page's start data
-**showing_end** 		| Current page's start data
-**total_no_of_data**	| Total data available
+**data_per_page** 		  | No of data per page
+**data** 				        | Current page's data
+**current_page_no**		  | Current page's number
+**total_page_no** 		  | Total no of pages
+**showing_start** 		  | Current page's start data
+**showing_end** 		    | Current page's start data
+**total_no_of_data**	  | Total data available
 
 
 #### Page 2 of 7
@@ -150,21 +180,86 @@ Field Name 				| Description
 ------------------------------------------------------------------------------------------
 ##### Inviting Friends (by mail or phone)
 
+
+
 #### Page 4 of 7
 ------------------------------------------------------------------------------------------
 ##### Payment Statements - List
+
+List of payments of current user
+
+###### Request
+
+Request Type 	| URL to request
+--------------|----------------------
+POST 			    | **base_url**/api/customer/payment_statements
+
+Body Field 				      | Description
+------------------------|------------
+**login_name** 			    | log_in name of the user
+**access_token** 		    | Token needed for next time API access
+**no_of_day_to_show** 	| Data of the needed days, optional, default = 7
+**data_per_page** 		  | No of data per page, optional, default = 10
+**current_page_no** 	  | Current active page no, optional, default = 1
+
+###### Response
+
+```json
+{
+  "no_of_day_to_show": "7",
+  "data_per_page": 10,
+  "data": [
+    {
+      "basic_payment_status": 'In Process',
+      "extra_payment_status": 'In Process',
+      "basic_service_payment": '100',
+      "week_ending": '7th January, 2015'
+    },
+    {
+      "basic_payment_status": 'Processed',
+      "extra_payment_status": 'Processed',
+      "basic_service_payment": '50',
+      "week_ending": '14th January, 2015'
+    }
+  ],
+  "current_page_no": "1",
+  "total_page_no": 1,
+  "showing_start": 1,
+  "showing_end": 2,
+  "total_no_of_data": 2
+}
+```
+
+Field Name 				      | Description
+------------------------|------------
+**no_of_day_to_show** 	| No of last day's data shown
+**data_per_page** 		  | No of data per page
+**data** 				        | Current page's data
+**current_page_no**		  | Current page's number
+**total_page_no** 		  | Total no of pages
+**showing_start** 		  | Current page's start data
+**showing_end** 		    | Current page's start data
+**total_no_of_data**	  | Total data available
 
 #### Page 5 of 7
 ------------------------------------------------------------------------------------------
 ##### How can we help
 
+Need to talk to alex about it - what will be the page view and is it a feedback? of just ask questions@alex?
+
 ##### View Training Videos
 
+Will be some video available in this page @alex?
+Will be they youtube vedios @alex?
+
 ##### Report issue with job
+
+Only storing the feedback @alex?
 
 #### Page 6 of 7
 ------------------------------------------------------------------------------------------
 ##### Link to app
+Will it be a fixed link returned from API (hard coded) or return from DB  @alex?
 
 #### Page 7 of 7
 ------------------------------------------------------------------------------------------
@@ -173,17 +268,17 @@ Field Name 				| Description
 ###### Request
 
 Request Type 	| URL to request
-----------------|----------------------
-POST 			| **base_url**/api/customer/register
+--------------|----------------------
+POST 			    | **base_url**/api/customer/register
 
-Body Field 			| Description
+Body Field 			    | Description
 --------------------|------------
-**first_name** 		| User's First Name
-**last_name** 		| User's Last Name
-**login_name** 		| User's Login Name
-**password** 		| User's password
+**first_name** 		  | User's First Name
+**last_name** 		  | User's Last Name
+**login_name** 		  | User's Login Name
+**password** 		    | User's password
 **neighbourhood** 	| User's neighbourhood
-**email** 			| User's Email
+**email** 			    | User's Email
 
 ###### Response
 
@@ -197,7 +292,7 @@ Body Field 			| Description
 ```
 
 Field Name 			| Description
---------------------|------------
+----------------|------------
 **message** 		| Server Message about log out responce
 **status** 			| true/false
 
@@ -206,12 +301,12 @@ Field Name 			| Description
 ###### Request
 
 Request Type 	| URL to request
-----------------|----------------------
-POST 			| **base_url**/api/customer/login
+--------------|----------------------
+POST 			    | **base_url**/api/customer/login
 
 Body Field 			| Description
---------------------|------------
-**login_name** 		| User login name
+----------------|------------
+**login_name** 	| User login name
 **password** 		| Password of the user
 
 ###### Response
@@ -230,13 +325,13 @@ Body Field 			| Description
 }
 ```
 
-Field Name 			| Description
+Field Name 			    | Description
 --------------------|------------
-**name** 			| User name
-**login_name** 		| User login name
-**user_type** 		| Type of the user
-**access_token** 	| Token needed for next time API access
-**expires_on** 		| Time of expire of the token
+**name** 			      | User name
+**login_name** 		  | User login name
+**user_type** 		  | Type of the user
+**access_token** 	  | Token needed for next time API access
+**expires_on** 		  | Time of expire of the token
 
 
 ##### Logout
@@ -244,12 +339,12 @@ Field Name 			| Description
 ###### Request
 
 Request Type 	| URL to request
-----------------|----------------------
-POST 			| **base_url**/api/customer/logout
+--------------|----------------------
+POST 			    | **base_url**/api/customer/logout
 
-Body Field 			| Description
+Body Field 			    | Description
 --------------------|------------
-**access_token** 	| Token needed for next time API access
+**access_token** 	  | Token needed for next time API access
 
 ###### Response
 
@@ -261,7 +356,7 @@ Body Field 			| Description
 ```
 
 Field Name 			| Description
---------------------|------------
+----------------|------------
 **message** 		| Server Message about log out responce
 **status** 			| true/false
 
@@ -272,7 +367,7 @@ Field Name 			| Description
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 
-No of total pages- 7
+No of total pages- 0
 
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
