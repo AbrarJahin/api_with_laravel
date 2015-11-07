@@ -76,16 +76,16 @@ Body Field 				      | Description
   "data_per_page": 10,
   "data": [
     {
-      "lawn_pro": 'Any Name',
-      "rating": '4.5',
-      "jobs": 'Any job detail',
+      "lawn_pro": "Any Name",
+      "rating": "4.5",
+      "jobs": "Any job detail",
       "payout": 56
     },
     {
-      "lawn_pro": 'Any One',
-      "rating": '4.2',
-      "jobs": 'New job',
-      "payout": '120'
+      "lawn_pro": "Any One",
+      "rating": "4.2",
+      "jobs": "New job",
+      "payout": "120"
     }
   ],
   "current_page_no": "1",
@@ -134,20 +134,20 @@ Body Field 				      | Description
   "data_per_page": 10,
   "data": [
     {
-      "finished_by": 'Other Partner',
-      "date": '7th January, 2015',
-      "time_started": '2:13:11 PM',
-      "time_completed": '5:52:14 PM',
-      "pay": '100',
-      "status": 'done'
+      "finished_by": "Other Partner",
+      "date": "7th January, 2015",
+      "time_started": "2:13:11 PM",
+      "time_completed": "5:52:14 PM",
+      "pay": "100",
+      "status": "done"
     },
     {
-      "finished_by": 'New Partner',
-      "date": '6th January, 2015',
-      "time_started": '12:13:11 PM',
-      "time_completed": '1:12:14 PM',
-      "pay": '50',
-      "status": 'done'
+      "finished_by": "New Partner",
+      "date": "6th January, 2015",
+      "time_started": "12:13:11 PM",
+      "time_completed": "1:12:14 PM",
+      "pay": "50",
+      "status": "done"
     }
   ],
   "current_page_no": "1",
@@ -243,6 +243,7 @@ Field Name              | Description
 **last_name**           | No of data per page
 **neighbourhood**       | Current page's data
 **email**               | Current page's number
+**message**             | If all updated or not
 
 
 #### Page 3 of 7
@@ -279,16 +280,16 @@ Body Field 				      | Description
   "data_per_page": 10,
   "data": [
     {
-      "basic_payment_status": 'In Process',
-      "extra_payment_status": 'In Process',
-      "basic_service_payment": '100',
-      "week_ending": '7th January, 2015'
+      "basic_payment_status": "In Process,
+      "extra_payment_status": "In Process,
+      "basic_service_payment": "100",
+      "week_ending": "7th January, 2015"
     },
     {
-      "basic_payment_status": 'Processed',
-      "extra_payment_status": 'Processed',
-      "basic_service_payment": '50',
-      "week_ending": '14th January, 2015'
+      "basic_payment_status": "Processed",
+      "extra_payment_status": "Processed",
+      "basic_service_payment": "50",
+      "week_ending": "14th January, 2015"
     }
   ],
   "current_page_no": "1",
