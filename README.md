@@ -551,18 +551,6 @@ Field Name      | Description
 **message**     | Server Message about log out responce
 **status**      | true/false
 
-------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------
-
-### Partner Account
-------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------
-
-No of total pages- 0
-
-------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------
-
 
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
@@ -571,7 +559,7 @@ No of total pages- 0
 ------------------------------------------------------------------------------------------
 No of total pages- 9
 
-#### Page 1 of 9
+#### Page 1 of 9 - Authintication
 ------------------------------------------------------------------------------------------
 
 ##### Registration
@@ -580,7 +568,7 @@ No of total pages- 9
 
 Request Type  | URL to request
 --------------|----------------------
-POST          | **base_url**/api/customer/register
+POST          | **base_url**/api/partner/register
 
 Body Field          | Description
 --------------------|------------
@@ -613,7 +601,7 @@ Field Name      | Description
 
 Request Type  | URL to request
 --------------|----------------------
-POST          | **base_url**/api/customer/login
+POST          | **base_url**/api/partner/login
 
 Body Field      | Description
 ----------------|------------
@@ -651,7 +639,7 @@ Field Name          | Description
 
 Request Type  | URL to request
 --------------|----------------------
-POST          | **base_url**/api/customer/logout
+POST          | **base_url**/api/partner/logout
 
 Body Field          | Description
 --------------------|------------
@@ -674,11 +662,84 @@ Field Name      | Description
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 
-### Partner Account
-------------------------------------------------------------------------------------------
+#### Page 2 of 9 - Profile Management
 ------------------------------------------------------------------------------------------
 
-No of total pages- 0
+##### Profile - Update
 
-------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------
+Update current user's profile
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/profile_update
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**first_name**          | No of last day's data shown,  optional
+**last_name**           | No of data per page,          optional
+**neighbourhood**       | Current page's data,          optional
+**email**               | Current page's number,        optional
+
+###### Response
+
+```json
+{
+  "first_name": "Abrar",
+  "last_name": "Jahin",
+  "neighbourhood": "4b02187c32",
+  "email": "something@anything.com",
+  "message": "Updated Successfully"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**first_name**          | No of last day's data shown
+**last_name**           | No of data per page
+**neighbourhood**       | Current page's data
+**email**               | Current page's number
+**message**             | If all updated or not
+
+
+##### Profile - Update Documents
+
+Update Document or profile picture of the user
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/profile_update
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**first_name**          | No of last day's data shown,  optional
+**last_name**           | No of data per page,          optional
+**neighbourhood**       | Current page's data,          optional
+**email**               | Current page's number,        optional
+
+###### Response
+
+```json
+{
+  "first_name": "Abrar",
+  "last_name": "Jahin",
+  "neighbourhood": "4b02187c32",
+  "email": "something@anything.com",
+  "message": "Updated Successfully"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**first_name**          | No of last day's data shown
+**last_name**           | No of data per page
+**neighbourhood**       | Current page's data
+**email**               | Current page's number
+**message**             | If all updated or not
