@@ -36,7 +36,9 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/partner/register',
 							'api/partner/logout',
 
-							'api/partner/logout',
+							'api/partner/profile_view',
+							'api/partner/profile_update',
+							'api/partner/profile_update',
 							//Partner API - END
 						];
 }

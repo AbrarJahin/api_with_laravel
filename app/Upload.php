@@ -4,29 +4,27 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Partner extends Model
+class Upload extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table        = 'partners';
-    protected $primaryKey   = 'user_id';
+    protected $table = 'uploaded';
 
      /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'business_type', 'company_name', 'type_of_phone', 'is_18_years_old'];
-
-    public $timestamps  = false;
+    protected $fillable = ['user_id', 'file_type', 'storing_location'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['user_id','id'];
+    protected $hidden = ['user_id'];
+
 }

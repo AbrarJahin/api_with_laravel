@@ -665,6 +665,46 @@ Field Name      | Description
 #### Page 2 of 9 - Profile Management
 ------------------------------------------------------------------------------------------
 
+##### Profile - View
+
+View current user's profile
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/profile_update
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "first_name": "Modonaa",
+  "last_name": "Kumari",
+  "business_type": "Multiple Person Business",
+  "company_name": "Anything",
+  "type_of_phone": "iOS",
+  "is_18_years_old": "yes",
+  "uploaded_files": []
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**first_name**          | No of last day's data shown
+**last_name**           | No of data per page
+**business_type**       | Type of Business
+**company_name**        | Name of partner's company
+**type_of_phone**       | Partner's phone type
+**is_18_years_old**     | Is the partner 16 years old
+**uploaded_files**      | List of files uploaded by the partner
+
+
 ##### Profile - Update
 
 Update current user's profile
@@ -679,6 +719,7 @@ Body Field              | Description
 ------------------------|------------
 **login_name**          | log_in name of the user
 **access_token**        | Token needed for next time API access
+
 **first_name**          | No of last day's data shown,  optional
 **last_name**           | No of data per page,          optional
 **neighbourhood**       | Current page's data,          optional

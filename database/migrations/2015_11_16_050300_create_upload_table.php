@@ -12,9 +12,9 @@ class CreateUploadTable extends Migration
      */
     public function up()
     {
-        Schema::create('uploades', function (Blueprint $table)
+        Schema::create('uploaded', function (Blueprint $table)
         {
-            $table->integer('partner_id')  ->unsigned()  ->index();
+            $table->integer('user_id')  ->unsigned()  ->index();
             $table->enum('file_type', [
                                         'Profile Picture',
                                         'Insurance Papers',
@@ -29,7 +29,7 @@ class CreateUploadTable extends Migration
             $table->timestamps();
 
             //Foreign Keys
-            $table->foreign('partner_id')->references('id')->on('partners');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -40,6 +40,6 @@ class CreateUploadTable extends Migration
      */
     public function down()
     {
-        Schema::drop('uploades');
+        Schema::drop('uploaded');
     }
 }

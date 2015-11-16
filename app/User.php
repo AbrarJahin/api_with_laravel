@@ -35,5 +35,21 @@ class User extends Model implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token','id'];
+
+    /**
+         * Get the partner record associated with the user.
+         */
+    public function partner()
+    {
+        return $this->hasOne('App\Partner');
+    }
+
+    /**
+         * Get the customer record associated with the user.
+         */
+    public function customer()
+    {
+        return $this->hasOne('App\Customer');
+    }
 }
