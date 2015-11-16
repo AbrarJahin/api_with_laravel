@@ -123,5 +123,15 @@ Route::group([ 'prefix' => 'api/partner', 'namespace' => 'API\Partner'], functio
 		'as' 	=> 'API.partner.profile_update',
 		'uses' 	=> 'ProfileController@profile_update'
 	]);
+	Route::post('upload_file',
+	[
+		'as' 	=> 'API.partner.upload_file',
+		'uses' 	=> 'ProfileController@upload_file'
+	]);
+	Route::post('remove_file',
+	[
+		'as' 	=> 'API.partner.remove_file',
+		'uses' 	=> 'ProfileController@remove_file'
+	]);
 	//Authintication - END
 });

@@ -25,7 +25,7 @@ class CreateUploadTable extends Migration
                                     ]
                         )
                     ->default('Other Supporting Documents');
-            $table->text('storing_location');
+            $table->text('storing_name');
             $table->timestamps();
 
             //Foreign Keys

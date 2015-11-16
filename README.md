@@ -673,7 +673,7 @@ View current user's profile
 
 Request Type  | URL to request
 --------------|----------------------
-POST          | **base_url**/api/partner/profile_update
+POST          | **base_url**/api/partner/profile_view
 
 Body Field              | Description
 ------------------------|------------
@@ -684,13 +684,50 @@ Body Field              | Description
 
 ```json
 {
-  "first_name": "Modonaa",
-  "last_name": "Kumari",
-  "business_type": "Multiple Person Business",
-  "company_name": "Anything",
-  "type_of_phone": "iOS",
+  "first_name": "Abrar",
+  "last_name": "Hasin",
+  "business_type": "Single Person Business",
+  "company_name": "a7050c",
+  "type_of_phone": "Other",
   "is_18_years_old": "yes",
-  "uploaded_files": []
+  "uploaded_files": [
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_77b7eea953_ERD.pdf",
+      "created_at": "2015-11-16 16:23:13",
+      "updated_at": "2015-11-16 16:23:13"
+    },
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_a7d2573a89_ERD.pdf",
+      "created_at": "2015-11-16 16:23:25",
+      "updated_at": "2015-11-16 16:23:25"
+    },
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_c1c8c99814_ERD.pdf",
+      "created_at": "2015-11-16 16:23:26",
+      "updated_at": "2015-11-16 16:23:26"
+    },
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_efd8915e36_ERD.pdf",
+      "created_at": "2015-11-16 16:23:27",
+      "updated_at": "2015-11-16 16:23:27"
+    },
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_8fa08fbdd1_ERD.pdf",
+      "created_at": "2015-11-16 16:23:28",
+      "updated_at": "2015-11-16 16:23:28"
+    },
+    {
+      "file_type": "Profile Picture",
+      "storing_name": "7_b9537dc251_Untitled.png",
+      "created_at": "2015-11-16 16:23:57",
+      "updated_at": "2015-11-16 16:23:57"
+    }
+  ]
 }
 ```
 
@@ -719,68 +756,109 @@ Body Field              | Description
 ------------------------|------------
 **login_name**          | log_in name of the user
 **access_token**        | Token needed for next time API access
-
-**first_name**          | No of last day's data shown,  optional
-**last_name**           | No of data per page,          optional
-**neighbourhood**       | Current page's data,          optional
-**email**               | Current page's number,        optional
+**first_name**          | First Name,               optional
+**last_name**           | Last Name,                optional
+**business_type**       | Type of Business,         optional
+**company_name**        | Name of company,          optional
+**type_of_phone**       | Partner's phone type,     optional
+**is_18_years_old**     | Is partner 18 years old,  optional
 
 ###### Response
 
 ```json
 {
-  "first_name": "Abrar",
-  "last_name": "Jahin",
-  "neighbourhood": "4b02187c32",
-  "email": "something@anything.com",
-  "message": "Updated Successfully"
+  "first_name": "Anything",
+  "last_name": "Nothing",
+  "business_type": "Single Person Business",
+  "company_name": "Any Company",
+  "type_of_phone": "iOS",
+  "is_18_years_old": "yes",
+  "message": [
+    "Updated Successfully",
+    "'business_type' value can only be 'Single Person Business' or 'Multiple Person Business', so 'business_type' not updated"
+  ]
 }
 ```
 
-Field Name              | Description
+Body Field              | Description
 ------------------------|------------
-**first_name**          | No of last day's data shown
-**last_name**           | No of data per page
-**neighbourhood**       | Current page's data
-**email**               | Current page's number
+**first_name**          | First Name
+**last_name**           | Last Name
+**business_type**       | Type of Business
+**company_name**        | Name of company
+**type_of_phone**       | Partner's phone type
+**is_18_years_old**     | Is partner 18 years old
 **message**             | If all updated or not
 
 
-##### Profile - Update Documents
+##### Profile - Upload Documents
 
-Update Document or profile picture of the user
+Upload Document or profile picture of the user
 
 ###### Request
 
 Request Type  | URL to request
 --------------|----------------------
-POST          | **base_url**/api/partner/profile_update
+POST          | **base_url**/api/partner/upload_file
 
 Body Field              | Description
 ------------------------|------------
 **login_name**          | log_in name of the user
 **access_token**        | Token needed for next time API access
-**first_name**          | No of last day's data shown,  optional
-**last_name**           | No of data per page,          optional
-**neighbourhood**       | Current page's data,          optional
-**email**               | Current page's number,        optional
+**file_type**           | Type of file
+**file**                | Image of PDF file
 
 ###### Response
 
 ```json
 {
-  "first_name": "Abrar",
-  "last_name": "Jahin",
-  "neighbourhood": "4b02187c32",
-  "email": "something@anything.com",
-  "message": "Updated Successfully"
+  "file": {
+    "file_type": "Profile Picture",
+    "storing_name": "7_69843c1c8a_ERD.png",
+    "updated_at": "2015-11-16 16:37:42",
+    "created_at": "2015-11-16 16:37:42"
+  },
+  "message": "Successfully Uploaded."
 }
 ```
 
 Field Name              | Description
 ------------------------|------------
-**first_name**          | No of last day's data shown
-**last_name**           | No of data per page
-**neighbourhood**       | Current page's data
-**email**               | Current page's number
+**file_type**           | No of last day's data shown
+**storing_name**        | No of data per page
+**updated_at**          | Update Time
+**created_at**          | Creation Time
+**message**             | If all updated or not
+
+##### Profile - Remove Documents
+
+Remove Document or profile picture of the user
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/remove_file
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**file_name**           | Type of file
+
+###### Response
+
+```json
+{
+  "file_name": "7_debb412cab_ERD.pdf",
+  "message": [
+    "File Deleted from Storage",
+    "Link Deleted from Database"
+  ]
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**file_name**           | Name of the file to remove
 **message**             | If all updated or not

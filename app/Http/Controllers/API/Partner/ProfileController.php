@@ -10,9 +10,12 @@ use App\Partner;
 use App\User;
 use App\Upload;
 use Validator;
+use File;
 
 class ProfileController extends APIAuth
 {
+    private $destinationPath= 'uploads';// upload path of all files
+
 	//showing the profile
     public function profile_view()
     {
@@ -98,8 +101,118 @@ class ProfileController extends APIAuth
 
     	return response()->json(
 								[
-                                    'message'    	=> $message
+                                    'first_name'       => $user->first_name,
+                                    'last_name'        => $user->last_name,
+                                    'business_type'    => $partner->business_type,
+                                    'company_name'     => $partner->company_name,
+                                    'type_of_phone'    => $partner->type_of_phone,
+                                    'is_18_years_old'  => $partner->is_18_years_old,
+                                    'message'    	   => $message
 								]
 							);
+    }
+
+    //file upload
+    public function upload_file()
+    {
+        $postData   = Request::all();
+
+        $validator = Validator::make(
+                                        $postData,//received data
+                                        [//Validator
+                                            'file_type'         => 'required|in:"Profile Picture","Insurance Papers","Driving License","Other Licenses","National ID","Other Supporting Documents"',
+                                            'file'              => 'required|mimes:jpeg,bmp,png,pdf'
+                                        ],
+                                        [//Custom Messaging
+                                            'file_type.in'     => "'file_type' should be 'Profile Picture','Insurance Papers','Driving License','Other Licenses','National ID' or 'Other Supporting Documents'",
+                                            'file.mimes'       => "File should be Image or PDF",
+                                        ]
+                                    );
+
+        if ($validator->fails())
+        {
+            return response(
+                                [
+                                    "message" => $validator->messages()->all()
+                                ],411);
+        }
+        else if($postData['file']->isValid())
+        {
+            $file=$postData['file'];
+            $fileName = Auth::user()->id.'_'.bin2hex(random_bytes(5)).'_'.$file->getClientOriginalName(); // renameing file
+            $file->move($this->destinationPath, $fileName); // uploading file to given path
+
+            $upload                     = new Upload;
+            $upload->user_id            = Auth::user()->id;
+            $upload->file_type          = $postData['file_type'];
+            $upload->storing_name   = $fileName; //file stored in $destinationPath."/".$fileName
+            $upload->save();
+
+            return response()->json(
+                                    [
+                                        'file'              => $upload,
+                                        'message'           => "Successfully Uploaded."
+                                    ]
+                                );
+        }
+        else
+        {
+            return response(
+                                [
+                                    "message" => 'Invalied upload, please try again'
+                                ],411);
+        }
+    }
+
+    //file remove
+    public function remove_file()
+    {
+        $postData   = Request::all();
+
+        $validator = Validator::make(
+                                        $postData,//received data
+                                        [//Validator
+                                            'file_name'         => 'required',
+                                        ]
+                                    );
+
+        if ($validator->fails())
+        {
+            return response(
+                                [
+                                    "message" => $validator->messages()->all()
+                                ],411);
+        }
+
+        $message = array();
+
+        //Remove the file if exists
+        $file = public_path()."\\".$this->destinationPath."\\".$postData['file_name'];
+        if (File::exists($file))
+        {
+            File::delete($file);
+            array_push($message,"File Deleted from Storage");
+        }
+        else
+        {
+            array_push($message,"File not found in Storage");
+        }
+        //Remove from DB
+        $if_file_exists = Upload::where('storing_name', '=', $postData['file_name'])->where('user_id', Auth::user()->id);
+
+        if ($if_file_exists->count())
+        {
+            $if_file_exists->delete();
+            array_push($message,"Link Deleted from Database");
+        }
+        else
+            array_push($message,"File not found in Database");
+        //sending the responce
+        return response()->json(
+                                    [
+                                        'file_name'         => $postData['file_name'],
+                                        'message'           => $message
+                                    ]
+                                );
     }
 }

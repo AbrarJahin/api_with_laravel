@@ -18,13 +18,13 @@ class Upload extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'file_type', 'storing_location'];
+    protected $fillable = ['user_id', 'file_type', 'storing_name'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['user_id'];
+    protected $hidden = ['user_id','id'];
 
 }

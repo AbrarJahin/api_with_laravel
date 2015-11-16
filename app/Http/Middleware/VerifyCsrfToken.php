@@ -38,7 +38,8 @@ class VerifyCsrfToken extends BaseVerifier
 
 							'api/partner/profile_view',
 							'api/partner/profile_update',
-							'api/partner/profile_update',
+							'api/partner/upload_file',
+							'api/partner/remove_file',
 							//Partner API - END
 						];
 }
