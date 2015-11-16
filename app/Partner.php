@@ -18,5 +18,15 @@ class Partner extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'company_name', 'type_of_phone', 'is_18_years_old'];
+    protected $fillable = ['user_id', 'business_type', 'company_name', 'type_of_phone', 'is_18_years_old'];
+
+    public $timestamps  = false;
+
+    /**
+         * Get the phone record associated with the user.
+         */
+    public function user()
+    {
+        return $this->hasOne('App\User');
+    }
 }

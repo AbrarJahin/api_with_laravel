@@ -15,7 +15,7 @@ class CreateCustomersTable extends Migration
         Schema::create('customers', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')  ->unsigned()  ->index();
+            $table->integer('user_id')  ->unsigned()  ->unique();
             $table->string('neighbourhood');
             $table->string('email',30)  ->unique();
             $table->tinyInteger('is_email_verified');   //true=1, false=0

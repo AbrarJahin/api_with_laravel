@@ -12,6 +12,7 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
+    						//Customer API - Start
 							'api/customer/login',
 							'api/customer/register',
 							'api/customer/logout',
@@ -28,5 +29,14 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/customer/training_videos',
 							'api/customer/how_can_we_help',
 							'api/customer/inviting_friends',
+							//Customer API - END
+
+							//Partner API - Start
+							'api/partner/login',
+							'api/partner/register',
+							'api/partner/logout',
+
+							'api/partner/logout',
+							//Partner API - END
 						];
 }

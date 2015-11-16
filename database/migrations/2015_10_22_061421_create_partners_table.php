@@ -15,7 +15,14 @@ class CreatePartnersTable extends Migration
         Schema::create('partners', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('user_id')  ->unsigned()  ->index();
+            $table->integer('user_id')  ->unsigned()  ->unique();
+            $table->enum('business_type',
+                            array(
+                                    'Single Person Business',
+                                    'Multiple Person Business'
+                                )
+                        )
+                    ->default('Single Person Business');
             $table->string('company_name',20);
             $table->enum('type_of_phone', ['Android', 'iOS', 'Other']);
             $table->enum('is_18_years_old', ['yes', 'no']);

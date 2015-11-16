@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\API\Customer;
+namespace App\Http\Controllers\API\Partner;
 
 use App\Http\Controllers\Controller;
 
@@ -9,7 +9,7 @@ use Auth;
 use Carbon\Carbon;
 
 use App\APIAuth;
-use App\Customer;
+use App\Partner;
 use App\User;
 
 class AuthController extends Controller
@@ -39,7 +39,7 @@ class AuthController extends Controller
         //Logging In Attempt
         $credentials = array(                       //Names hould be as in DB columns
                                 'login_name'    => strtolower($postData['login_name']) ,
-                                'user_type'     => 'customer' ,
+                                'user_type'     => 'partner' ,
                                 'password'      => $postData['password']
                             );
 
@@ -124,18 +124,29 @@ class AuthController extends Controller
     public function register()
     {
         $postData       = Request::all();
-        $message        = "Registration Failed";
+        $message        = "Registration Failed !!";
         $data           = 0;
 
         $validator = Validator::make($postData,
                         [
-                            'first_name'    => 'required',
-                            'last_name'     => 'required',
-                            'login_name'    =>  'required|unique:users',
-                            'password'      => 'required',
-                            'neighbourhood' => 'required',
-                            'email'         => 'required|email'
-                        ]);
+                            //user_type = partner
+                            'first_name'        => 'required',
+                            'last_name'         => 'required',
+                            'login_name'        => 'required|unique:users',
+                            'password'          => 'required',
+                            'business_type'     => 'required|in:"Single Person Business","Multiple Person Business"',
+                            'company_name'      => 'required',
+                            'type_of_phone'     => 'required|in:"Android","iOS","Other"',
+                            'is_18_years_old'   => 'required|in:"yes","no"',
+                        ],
+                        //Custom Messaging
+                        [
+                            'login_name.unique'     => "'login_name' already taken, please try a new one",
+                            'business_type.in'      => "'business_type' value can only be 'Single Person Business' or 'Multiple Person Business'",
+                            'type_of_phone.in'      => "'type_of_phone' value can only be 'Android', 'iOS' or 'Other'",
+                            'is_18_years_old.in'    => "'is_18_years_old' value can only be 'yes' or 'no'",
+                        ]
+                        );
 
         if ($validator->fails())
         {
@@ -152,13 +163,15 @@ class AuthController extends Controller
                                     'last_name'     => $postData['last_name'],
                                     'login_name'    => strtolower($postData['login_name']),
                                     'password'      => bcrypt($postData['password']),
-                                    'user_type'     => 'customer',
+                                    'user_type'     => 'partner',
                                     'referal_code'  => bin2hex(random_bytes(30))
                                 ));
-            Customer::Create(array(
-                                    'user_id'       => $user->id,
-                                    'neighbourhood' => $postData['neighbourhood'],
-                                    'email'         => $postData['email']
+            Partner::Create(array(
+                                    'user_id'           => $user->id,
+                                    'business_type'     => $postData['business_type'],
+                                    'company_name'      => $postData['company_name'],
+                                    'type_of_phone'     => $postData['type_of_phone'],
+                                    'is_18_years_old'   => $postData['is_18_years_old']
                                 ));
             $message = "Successfully registered, please verify your mail";
             $data    = 1;
