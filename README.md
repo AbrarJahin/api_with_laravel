@@ -662,7 +662,7 @@ Field Name      | Description
 ------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------
 
-#### Page 2 of 9 - Profile Management
+#### Page 2 of 9 - Profile Management and 9 of 9 with 'Upload Document' (upload images taken at job location and send to Admin)
 ------------------------------------------------------------------------------------------
 
 ##### Profile - View
@@ -813,11 +813,12 @@ Body Field              | Description
 ```json
 {
   "file": {
-    "file_type": "Profile Picture",
-    "storing_name": "7_69843c1c8a_ERD.png",
-    "updated_at": "2015-11-16 16:37:42",
-    "created_at": "2015-11-16 16:37:42"
+    "file_type": "Insurance Papers",
+    "storing_name": "7_ada2616aaa_ERD.pdf",
+    "updated_at": "2015-11-17 02:38:45",
+    "created_at": "2015-11-17 02:38:45"
   },
+  "file_url": "http://localhost/logistics-API/public/uploads/7_ada2616aaa_ERD.pdf",
   "message": "Successfully Uploaded."
 }
 ```
@@ -828,6 +829,7 @@ Field Name              | Description
 **storing_name**        | No of data per page
 **updated_at**          | Update Time
 **created_at**          | Creation Time
+**file_url**            | URL to access the file
 **message**             | If all updated or not
 
 ##### Profile - Remove Documents
@@ -862,3 +864,117 @@ Field Name              | Description
 ------------------------|------------
 **file_name**           | Name of the file to remove
 **message**             | If all updated or not
+
+
+#### Page 3 of 9 - Be catorgized by location, expertise & date/time availability - market (city & state), lawn equipment owned, days of week available to work.
+------------------------------------------------------------------------------------------
+
+##### partner_location - View
+
+View current user's service locations
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_location_view
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "partner_locations": [
+    {
+      "zip_code": "2342",
+      "type": "UNIQUE",
+      "primary_city": "RhdfWhy",
+      "acceptable_cities": "NoYa"
+    },
+    {
+      "zip_code": "4356",
+      "type": "STANDARD",
+      "primary_city": "AdAnything",
+      "acceptable_cities": "Ya"
+    }
+  ]
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**zip_code**            | Available Area's zip codes
+**type**                | @Alex
+**primary_city**        | @Alex
+**acceptable_cities**   | @Alex
+
+##### partner_location - Insert
+
+Insert current user's service locations
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_location_insert
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**zip_code[]**          | Aray of zip codes that are not already inserted
+
+###### Response
+
+```json
+{
+  "partner_locations": [
+    {
+      "zip_code": "2342"
+    },
+    {
+      "zip_code": "4356"
+    }
+  ],
+  "message": "Inserted Successfully"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**zip_code**            | Available Area's zip codes
+
+##### partner_location - Delete
+
+Delete current user's service locations
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_location_remove
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**zip_code**            | Zip code to delete
+
+###### Response
+
+```json
+{
+  "zip_code": "2342",
+  "message": "Successfully Deleted"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**zip_code**            | Available Area's zip codes
+**message**             | Success or fail message
+

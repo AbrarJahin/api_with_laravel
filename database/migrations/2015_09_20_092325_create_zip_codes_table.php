@@ -16,6 +16,9 @@ class CreateZipCodesTable extends Migration
         {
             //$table->increments('id');             //No Need
             $table->string('zip_code',10)->unique();    //may be confusing, so it is string, not integer
+            $table->enum('type', array('UNIQUE', 'STANDARD', 'PO BOX'));
+            $table->string('primary_city', 30);
+            $table->string('acceptable_cities', 30)->nullable();
         });
     }
 

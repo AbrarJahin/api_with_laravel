@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MonthTableSeeder::class);
         $this->call(CustomerTableSeeder::class);
         $this->call(PartnerTableSeeder::class);
+        $this->call(ZipCodeTableSeeder::class);
 
         Model::reguard();
     }

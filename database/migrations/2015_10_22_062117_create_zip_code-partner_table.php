@@ -16,6 +16,7 @@ class CreateZipCodePartnerTable extends Migration
         {
             $table->string('zip_code',10)->index();
             $table->integer('partner_id')  ->unsigned()  ->index();
+            $table->unique('zip_code','partner_id');
 
             //Foreign Keys
             $table->foreign('zip_code')->references('zip_code')->on('zip_codes');

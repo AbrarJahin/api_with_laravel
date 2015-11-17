@@ -22,6 +22,7 @@ class CreateUploadTable extends Migration
                                         'Other Licenses',
                                         'National ID',
                                         'Other Supporting Documents',
+                                        'Job Location Image',
                                     ]
                         )
                     ->default('Other Supporting Documents');

@@ -133,5 +133,23 @@ Route::group([ 'prefix' => 'api/partner', 'namespace' => 'API\Partner'], functio
 		'as' 	=> 'API.partner.remove_file',
 		'uses' 	=> 'ProfileController@remove_file'
 	]);
-	//Authintication - END
+	//Profile - END
+
+	//ProfileCatorgized
+	Route::post('partner_location_view',
+	[
+		'as' 	=> 'API.partner.partner_location_view',
+		'uses' 	=> 'ProfileCatorgized@partner_location_view'
+	]);
+	Route::post('partner_location_insert',
+	[
+		'as' 	=> 'API.partner.partner_location_insert',
+		'uses' 	=> 'ProfileCatorgized@partner_location_insert'
+	]);
+	Route::post('partner_location_remove',
+	[
+		'as' 	=> 'API.partner.partner_location_remove',
+		'uses' 	=> 'ProfileCatorgized@partner_location_remove'
+	]);
+	//ProfileCatorgized - END
 });

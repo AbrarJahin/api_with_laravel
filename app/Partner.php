@@ -29,4 +29,9 @@ class Partner extends Model
      * @var array
      */
     protected $hidden = ['user_id','id'];
+
+    public function partner()
+    {
+        return $this->hasMany('App\PartnerZipCode');
+    }
 }

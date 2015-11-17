@@ -11,9 +11,10 @@ use App\User;
 use App\Upload;
 use Validator;
 use File;
+use URL;
 
 class ProfileController extends APIAuth
-{
+{  
     private $destinationPath= 'uploads';// upload path of all files
 
 	//showing the profile
@@ -120,11 +121,11 @@ class ProfileController extends APIAuth
         $validator = Validator::make(
                                         $postData,//received data
                                         [//Validator
-                                            'file_type'         => 'required|in:"Profile Picture","Insurance Papers","Driving License","Other Licenses","National ID","Other Supporting Documents"',
+                                            'file_type'         => 'required|in:"Profile Picture","Insurance Papers","Driving License","Other Licenses","National ID","Other Supporting Documents","Job Location Image"',
                                             'file'              => 'required|mimes:jpeg,bmp,png,pdf'
                                         ],
                                         [//Custom Messaging
-                                            'file_type.in'     => "'file_type' should be 'Profile Picture','Insurance Papers','Driving License','Other Licenses','National ID' or 'Other Supporting Documents'",
+                                            'file_type.in'     => "'file_type' should be 'Profile Picture','Insurance Papers','Driving License','Other Licenses','National ID', 'Other Supporting Documents' or 'Job Location Image'",
                                             'file.mimes'       => "File should be Image or PDF",
                                         ]
                                     );
@@ -145,12 +146,13 @@ class ProfileController extends APIAuth
             $upload                     = new Upload;
             $upload->user_id            = Auth::user()->id;
             $upload->file_type          = $postData['file_type'];
-            $upload->storing_name   = $fileName; //file stored in $destinationPath."/".$fileName
+            $upload->storing_name       = $fileName; //file stored in $destinationPath."/".$fileName
             $upload->save();
 
             return response()->json(
                                     [
                                         'file'              => $upload,
+                                        'file_url'          => URL::to('/')."/".$this->destinationPath."/".$fileName,
                                         'message'           => "Successfully Uploaded."
                                     ]
                                 );
