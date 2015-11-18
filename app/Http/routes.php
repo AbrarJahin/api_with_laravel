@@ -151,5 +151,20 @@ Route::group([ 'prefix' => 'api/partner', 'namespace' => 'API\Partner'], functio
 		'as' 	=> 'API.partner.partner_location_remove',
 		'uses' 	=> 'ProfileCatorgized@partner_location_remove'
 	]);
+	Route::post('partner_experties_add',
+	[
+		'as' 	=> 'API.partner.partner_experties_add',
+		'uses' 	=> 'ProfileCatorgized@partner_experties_add'
+	]);
+	Route::post('partner_experties_view',
+	[
+		'as' 	=> 'API.partner.partner_experties_view',
+		'uses' 	=> 'ProfileCatorgized@partner_experties_view'
+	]);
+	Route::post('partner_experties_remove',
+	[
+		'as' 	=> 'API.partner.partner_experties_remove',
+		'uses' 	=> 'ProfileCatorgized@partner_experties_remove'
+	]);
 	//ProfileCatorgized - END
 });

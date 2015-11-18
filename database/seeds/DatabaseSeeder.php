@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CustomerTableSeeder::class);
         $this->call(PartnerTableSeeder::class);
         $this->call(ZipCodeTableSeeder::class);
+        $this->call(ServiceDayTableSeeder::class);
+        $this->call(ServiceTimeTableSeeder::class);
 
         Model::reguard();
     }

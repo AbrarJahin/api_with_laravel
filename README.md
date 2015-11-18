@@ -978,3 +978,106 @@ Field Name              | Description
 **zip_code**            | Available Area's zip codes
 **message**             | Success or fail message
 
+
+##### partner_experties - View
+
+View current user's experties
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_experties_view
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+{
+  "partner_locations": [
+    {
+      "experties_name": "anything"
+    },
+    {
+      "experties_name": "nothing"
+    },
+    {
+      "experties_name": "Baybye"
+    }
+  ]
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**experties_name**      | Name of partner's experties
+
+##### partner_experties - Add
+
+Add current user's experties
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_experties_add
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**experties[]**         | Array of experties
+
+###### Response
+
+```json
+{
+  "data": [
+    "passqq",
+    "qwe"
+  ],
+  "status": true,
+  "message": "Inserted Successfully"
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Provided Data
+**status**              | Status of insertion
+**message**             | Data that are provided
+
+##### partner_experties - Remove
+
+Remove current user's experties
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_experties_remove
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**experties_name**      | Experties Name
+
+###### Response
+
+```json
+{
+  "data": "passqq",
+  "no_of_deleted_files": 1
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Provided Data
+**no_of_deleted_files** | No of deleted files
+

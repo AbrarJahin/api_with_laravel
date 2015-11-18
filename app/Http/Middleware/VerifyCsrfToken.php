@@ -44,6 +44,9 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/partner/partner_location_view',
 							'api/partner/partner_location_insert',
 							'api/partner/partner_location_remove',
+							'api/partner/partner_experties_add',
+							'api/partner/partner_experties_view',
+							'api/partner/partner_experties_remove',
 							//Partner API - END
 						];
 }
