@@ -1081,3 +1081,363 @@ Field Name              | Description
 **data**                | Provided Data
 **no_of_deleted_files** | No of deleted files
 
+##### partner_availiblity - Add
+
+Add current partner's availiblity
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_availiblity_add
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**day_id**              | Id of available date
+**time_id**             | ID of available time
+
+###### Response
+
+```json
+{
+  "data": {
+    "day_id": "1",
+    "time_id": "1"
+  },
+  "status": true
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Provided Data
+**status**              | Data add status
+
+##### partner_availiblity - view
+
+view current partner_availiblity
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_availiblity_view
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+[
+  {
+    "day_name": "Saturday",
+    "service_time_name": "Morning 1"
+  },
+  {
+    "day_name": "Sunday",
+    "service_time_name": "Noon 3"
+  },
+  {
+    "day_name": "Wednesday",
+    "service_time_name": "Noon 3"
+  },
+  {
+    "day_name": "Wednesday",
+    "service_time_name": "Evening 6"
+  }
+]
+```
+
+Field Name              | Description
+------------------------|------------
+**day_name**            | Name of the day
+**service_time_name**   | Service time
+
+##### partner_availiblity - delete
+
+delete current partner_availiblity
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_availiblity_delete
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**day_id**              | Day ID
+**time_id**             | ID of time
+
+###### Response
+
+```json
+{
+  "data": {
+    "day_id": "2",
+    "time_id": "3"
+  },
+  "status": 1
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Data received
+**status**              | No of deleted entyies
+
+##### partner_owned_equipment - add
+
+add current partner's owned equipment
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_owned_equipment_add
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**owned_equipment**     | Equipment Name
+
+###### Response
+
+```json
+{
+  "data": "Yard",
+  "status": true
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Data received
+**status**              | No of deleted entyies
+
+
+##### partner_owned_equipment - delete
+
+delete current partner's owned equipment
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_owned_equipment_delete
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+**owned_equipment**     | Equipment Name
+
+###### Response
+
+```json
+{
+  "data": "Ball",
+  "status": 1
+}
+```
+
+Field Name              | Description
+------------------------|------------
+**data**                | Data received
+**status**              | No of deleted entyies
+
+##### partner_owned_equipment - view
+
+view current partner's owned equipment
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/partner_owned_equipment_delete
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+[
+  {
+    "owned_equipment": "Anything"
+  },
+  {
+    "owned_equipment": "Hammer"
+  },
+  {
+    "owned_equipment": "Nothing"
+  },
+  {
+    "owned_equipment": "Yard"
+  },
+  {
+    "owned_equipment": "Yards"
+  }
+]
+```
+
+Field Name              | Description
+------------------------|------------
+**owned_equipment**     | Equipment owned by partner
+
+
+#### Page 0 of 9 - lists
+------------------------------------------------------------------------------------------
+
+##### service_time_list
+
+View service_time_list
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/service_time_list
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+[
+  {
+    "id": 1,
+    "service_time_name": "Morning 1"
+  },
+  {
+    "id": 2,
+    "service_time_name": "Morning 2"
+  },
+  {
+    "id": 3,
+    "service_time_name": "Noon 3"
+  },
+  {
+    "id": 4,
+    "service_time_name": "Noon 4"
+  },
+  {
+    "id": 5,
+    "service_time_name": "Afternoon "
+  },
+  {
+    "id": 6,
+    "service_time_name": "Evening 6"
+  },
+  {
+    "id": 7,
+    "service_time_name": "Night 7"
+  }
+]
+```
+
+Field Name              | Description
+------------------------|------------
+**id**                  | ID
+**service_time_name**   | Time slot description
+
+##### service_day_list
+
+View service_day_list
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/service_day_list
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+[
+  {
+    "id": 1,
+    "day_name": "Saturday"
+  },
+  {
+    "id": 2,
+    "day_name": "Sunday"
+  },
+  {
+    "id": 3,
+    "day_name": "Monday"
+  },
+  {
+    "id": 4,
+    "day_name": "Tuesday"
+  },
+  {
+    "id": 5,
+    "day_name": "Wednesday"
+  },
+  {
+    "id": 6,
+    "day_name": "Thursday"
+  },
+  {
+    "id": 7,
+    "day_name": "Friday"
+  }
+]
+```
+
+Field Name              | Description
+------------------------|------------
+**id**                  | ID
+**day_name**            | Name of the day
+
+#### Page 0 of 9 - lists
+------------------------------------------------------------------------------------------
+
+##### service_time_list
+
+View service_time_list
+
+###### Request
+
+Request Type  | URL to request
+--------------|----------------------
+POST          | **base_url**/api/partner/service_time_list
+
+Body Field              | Description
+------------------------|------------
+**login_name**          | log_in name of the user
+**access_token**        | Token needed for next time API access
+
+###### Response
+
+```json
+[
+  {
+    "id": 1,
+    "service_time_name": "Morning 1"
+  }
+]
+```
+
+Field Name              | Description
+------------------------|------------
+**id**                  | ID
+**service_time_name**   | Time slot description

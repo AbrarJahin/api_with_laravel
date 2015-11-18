@@ -162,6 +162,116 @@ class ProfileCatorgized extends APIAuth
         return response()->json(
                                 [
                                     'data'      => $postData['experties_name'],
+                                    'no_of_deleted_files' => $status
+                                ]
+                            );
+    }
+
+    //Partner Availiblity
+    //Add
+    public function partner_availiblity_add()
+    {
+        $postData   = Request::all();
+        $partner = Partner::find(Auth::user()->id);
+
+        $status = DB::table('partner_availablity')->insert(
+                                                            [
+                                                                'partner_id'    => $partner->id,
+                                                                'day_id'        => $postData['day_id'],
+                                                                'time_id'       => $postData['time_id'],
+                                                            ]
+                                                        );
+        return response()->json(
+                                [
+                                    'data'   => array(
+                                                        'day_id'        => $postData['day_id'],
+                                                        'time_id'       => $postData['time_id'],
+                                                    ),
+                                    'status' => $status
+                                ]
+                            );
+    }
+
+    //View
+    public function partner_availiblity_view()
+    {
+        $partner = Partner::find(Auth::user()->id);
+
+        return DB::table('partner_availablity')
+                                ->join('partners', 'partners.id', '=', 'partner_availablity.partner_id')
+                                ->join('service_day', 'service_day.id', '=', 'partner_availablity.day_id')
+                                ->join('service_time', 'service_time.id', '=', 'partner_availablity.time_id')
+                                ->select('service_day.day_name', 'service_time.service_time_name')
+                                ->where('partner_id', '=', $partner->id)
+                                ->distinct()
+                                ->get();
+    }
+
+    //Delete
+    public function partner_availiblity_delete()
+    {
+        $postData   = Request::all();
+        $partner = Partner::find(Auth::user()->id);
+
+        $status = DB::table('partner_availablity')
+                                ->where('partner_id', '=', $partner->id)
+                                ->where('day_id', '=', $postData['day_id'])
+                                ->where('time_id','=', $postData['time_id'])
+                                ->delete();
+        return response()->json(
+                                [
+                                    'data'   => array(
+                                                        'day_id'        => $postData['day_id'],
+                                                        'time_id'       => $postData['time_id'],
+                                                    ),
+                                    'status' => $status
+                                ]
+                            );
+    }
+
+    //Partner owned equipement
+    //Add
+    public function partner_owned_equipment_add()
+    {
+        $postData   = Request::all();
+        $partner = Partner::find(Auth::user()->id);
+
+        $status = DB::table('partner_owned_equepment')->insert(
+                                                            [
+                                                                'partner_id'        => $partner->id,
+                                                                'owned_equipment'   => $postData['owned_equipment'],
+                                                            ]
+                                                        );
+        return response()->json(
+                                [
+                                    'data'   => $postData['owned_equipment'],
+                                    'status' => $status
+                                ]
+                            );
+    }
+    //View
+    public function partner_owned_equipment_view()
+    {
+        $partner = Partner::find(Auth::user()->id);
+
+        return DB::table('partner_owned_equepment')
+                    ->select('owned_equipment')
+                    ->where('partner_id',       '=', $partner->id)
+                    ->get();
+    }
+    //delete
+    public function partner_owned_equipment_delete()
+    {
+        $postData   = Request::all();
+        $partner = Partner::find(Auth::user()->id);
+
+        $status = DB::table('partner_owned_equepment')
+                    ->where('partner_id',       '=', $partner->id)
+                    ->where('owned_equipment',  '=', $postData['owned_equipment'])
+                    ->delete();
+        return response()->json(
+                                [
+                                    'data'   => $postData['owned_equipment'],
                                     'status' => $status
                                 ]
                             );

@@ -20,7 +20,7 @@ class CreatePartnerOwnedEquepmentTable extends Migration
             //Foreign Keys
             $table->foreign('partner_id')->references('id')->on('partners');
 
-            $table->unique('partner_id','owned_equipment');
+            $table->unique(['partner_id','owned_equipment']);
         });
     }
 

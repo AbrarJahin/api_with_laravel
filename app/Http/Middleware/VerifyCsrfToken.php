@@ -32,6 +32,9 @@ class VerifyCsrfToken extends BaseVerifier
 							//Customer API - END
 
 							//Partner API - Start
+							'api/partner/service_time_list',
+							'api/partner/service_day_list',
+
 							'api/partner/login',
 							'api/partner/register',
 							'api/partner/logout',
@@ -47,6 +50,14 @@ class VerifyCsrfToken extends BaseVerifier
 							'api/partner/partner_experties_add',
 							'api/partner/partner_experties_view',
 							'api/partner/partner_experties_remove',
+							'api/partner/partner_availiblity_add',
+							'api/partner/partner_availiblity_view',
+							'api/partner/partner_availiblity_delete',
+							'api/partner/partner_owned_equipment_add',
+							'api/partner/partner_owned_equipment_delete',
+							'api/partner/partner_owned_equipment_view',
+
+							'api/partner/open_work_orders_view',
 							//Partner API - END
 						];
 }

@@ -14,7 +14,7 @@ use File;
 use URL;
 
 class ProfileController extends APIAuth
-{  
+{
     private $destinationPath= 'uploads';// upload path of all files
 
 	//showing the profile
