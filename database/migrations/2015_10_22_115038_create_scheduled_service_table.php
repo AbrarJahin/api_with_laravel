@@ -21,7 +21,7 @@ class CreateScheduledServiceTable extends Migration
             $table->integer('paid_card_id')             ->unsigned()  ->index();
             $table->float('tip');
             $table->float('payable_money');
-            $table->enum('is_done', ['In Progress', 'Cancelled', 'Done'])->default('In Progress');   //if work done, then payment done, then is_done=1
+            $table->enum('is_done', ['Open','In Progress', 'Cancelled', 'Done'])->default('Open');   //if work done, then payment done, then is_done=1
             $table->timestamps();                       //updated_at = job_done and done payment
             //created_at                                = Job start time
             //updated_at or service_rating.created_at   = Job end time

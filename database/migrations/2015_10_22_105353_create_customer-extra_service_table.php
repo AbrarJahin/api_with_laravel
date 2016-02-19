@@ -17,14 +17,16 @@ class CreateCustomerExtraServiceTable extends Migration
             $table->increments('id');
             $table->integer('customer_id')  ->unsigned()  ->index();
             $table->integer('property_id')  ->unsigned()  ->index();
-            $table->float('money_payable');
+            $table->integer('fc_id')  ->unsigned()  ->index();  //fc = frequency-customer
             $table->integer('extra_service_id')  ->unsigned()  ->index();
+            $table->float('money_payable');
             $table->tinyInteger('is_enabled');              //Nothing would be deleted from this table
             $table->timestamps();   //updated_at = time of disabling
 
             //Foreign Keys
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('property_id')->references('id')->on('customer_property');
+            $table->foreign('fc_id')->references('id')->on('frequency-customer');
             $table->foreign('extra_service_id')->references('id')->on('extra_provided_services');
         });
     }
